@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Aleatoria</title>
+
+    <!-- Cargar los íconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #edebd4;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            font-family: 'Uncial Antiqua', serif;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .icon-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .icon-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #4CAF50;
+            transition: color 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <img id="randomImage" src="https://github.com/Biblias/wallpaperoftheday/blob/main/Image1.jpg?raw=true" alt="Imagen aleatoria"> <!-- Imagen aleatoria -->
+    <br>
+    <div class="icon-buttons">
+        <a id="downloadBtn" class="icon-btn" download>
+            <i class="fas fa-download"></i> <!-- Icono de descargar -->
+        </a>
+    </div>
+</div>
+ <!-- Enlace a Google Fonts para la fuente bíblica -->
+ <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+
+ 
+<script>
+    // URLs de imágenes alojadas en tu repositorio de GitHub
+    const imageUrls = [
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/001vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/002vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/003vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/004vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/005vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/006vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/007vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/008vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/009vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/010vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/011vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/012vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/013vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/014vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/015vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/016vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/017vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/018vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/019vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/020vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/021vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/022vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/023vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/024vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/025vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/026vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/027vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/028vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/029vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/030vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/031vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/032vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/033vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/034vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/035vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/036vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/037vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/038vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/039vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/040vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/041vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/042vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/043vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/044vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/045vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/046vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/047vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/048vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/049vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/050vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/051vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/052vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/053vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/054vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/055vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/056vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/057vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/058vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/059vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/060vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/061vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/062vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/063vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/064vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/065vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/066vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/067vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/068vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/069vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/070vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/071vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/072vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/073vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/074vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/075vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/076vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/077vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/078vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/079vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/080vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/081vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/082vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/083vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/084vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/085vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/086vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/087vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/088vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/089vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/090vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/091vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/092vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/093vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/094vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/095vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/096vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/097vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/098vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/099vers-por-not.jpg?raw=true',
+'https://github.com/BIBLIASYESTUDIOS/imgversiculodeldiaportugues/blob/main/100vers-por-not.jpg?raw=true',
+];
+
+    // Selecciona una imagen aleatoria y la muestra
+    function showRandomImage() {
+        const randomIndex = Math.floor(Math.random() * imageUrls.length);
+        const imageElement = document.getElementById('randomImage');
+        const downloadBtn = document.getElementById('downloadBtn');
+        
+        const selectedImageUrl = imageUrls[randomIndex];
+        
+        // Actualiza la imagen aleatoria mostrada
+        imageElement.src = selectedImageUrl;
+
+        // Actualiza el botón de descarga con el enlace de la imagen
+        downloadBtn.href = selectedImageUrl;
+
+        return selectedImageUrl;
+    }
+
+    // Llamada inicial para mostrar una imagen aleatoria al cargar la página
+    showRandomImage();
+</script>
+
+</body>
+</html>
